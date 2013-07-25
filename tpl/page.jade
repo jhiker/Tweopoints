@@ -1,0 +1,152 @@
+!!! 5
+html
+  head
+    meta(name='description', content='Tweopoints (a "Big Dada Production") is a visual tool unlike any other, which allows you to create a map of a given segment of time on twitter, filtered by keyword.  Click on the tweet to see profile; hover over with mouse to see content.') 
+    meta(name='keywords', content='Visualize twitter, twitter map, twitter streaming, twitter search') 
+    style
+      #titlebar {
+      text-align: center;
+      color:blue;
+      font-family: Arial, Arial Black, Sans-Serif;
+      }
+      #titlebar input#shareurl{
+      background-color: lightgrey;
+      length:150%;
+      color:purple;
+      }
+      #sharespace{
+      font-size=115%;
+      font-family: Arial, Cooper Black;
+      }
+      #twittershare{
+      visibility: hidden
+      }
+      #header {
+      position: relative;
+      height: 45px;
+      width: 100%;
+      background: red;
+      }
+      #header input#field {
+      width: 50%;
+      margin: 2% 5%;
+      }
+      #titlebar input#sharer{
+      font-size: 110%; background-color: grey; color: black; 
+      }
+      #header input#adder {
+      width: 15%;
+      position: absolute;
+      margin: 2% 5%;
+      font-size: 150%; background-color: green; color: white; padding: 10px; text-align: right; border-radius: 10px 10px 10px 10px;
+
+      }      
+      #tweets {
+      padding: 5%;
+      }
+      .data {
+      color: blue;
+      }
+      #map-canvas {
+        height: 500px;
+      }
+      .name {
+      color: black;
+      float: left;
+      border: 1px solid black;
+      width: 48px;
+      height: 48px;
+      margin: 2px;
+      }
+      #footerbox {
+      position: absolute;
+      border:1px solid #AAA;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;vertical-align:top;  align:center;
+      font-size: 120%; font-family:Arial;
+      }
+      .tweet {
+      padding: 5px;
+      }
+      #topic-buttons {
+        font-family: Garamond, Times New Roman, Serif; font-size:110%;
+        background: lightblue;
+        height: 35px;
+      }
+      # keys {}
+      #header input#field1 {
+      width: 50%;
+      margin: 2% 5%;
+      }
+    script(src='/socket.io/socket.io.js')
+    script
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    script 
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41920795-1', 'nodejitsu.com');
+      ga('send', 'pageview');
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js')
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en')
+
+    script(src='/twitter.js')
+
+    title= "Tweopoints Search"
+    link(rel='shortcut icon', href='/favicon.ico')
+  body
+    #titlebar 
+      h1 #Tweopoints 
+      h5 (a 'Big Dada' production)
+      p 
+        | Enter a keyword (or two, separated by ",")
+        br
+        | Sit back as tweet-measles, color-coded (according to type) and size-coded (according to # followers), collect on the map. 
+        br
+        | Put cursor over tweesle on map to see content; click to go to the user profile. Refresh page to clear map.
+        br 
+        | If it gets annoyingly sluggish (can happen only if you filter very little or not at all), hit "Stop" button. 
+        br
+        | If it looks crowded, just zoom in on whatever area (marker size stays constant.)
+        br  
+      #sharespace 
+        i 
+          |Want to share map?
+        input#sharer(type='button', value='Click here for URL')
+      br
+      |Copy:
+      input#shareurl.field.left(type='text', placeholder='URL will appear here', readonly='readonly',style='width: 350px;')
+      #twittershare
+        a.twitter-share-button(href='https://twitter.com/share', data-lang='en') Tweet
+      i
+        |Fix map: 
+      input#dynamic(type='checkbox', checked='checked')
+      br
+      a(href="#footerbox") More Info Below
+      b
+    #header
+      input#field(placeholder='for example: "we, I" or "bieber, kardashian"')
+      input#adder(type='button', value='Search!')
+    #topic-buttons
+    #topicList
+    #rendermap
+    #map-canvas
+    #footerbox
+      p
+        a.twitter-share-button(href='https://twitter.com/share', data-lang='en') Tweet
+        a(href='#', onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=\'+encodeURIComponent(location.href), 'facebook-share-dialog\', 'width=626,height=436\');  return false;")
+      | Share this map on Facebook
+      p 
+        | Made by Jonathan Leslie (jonathanleslie73 at gmail) with node.js, using socket.io; obviously using Streaming API.  
+        br
+        |Size key: 
+        br
+        | Followers<=500: minimum size of 6 pixels across; 
+        br
+        | Followers > 200,000: a maximum of about 20 pixels across, 
+        br
+        | Everything in between more or less a linear progression from min to max.  
+      p Notes:  only searches geo-tagged tweets (about 30%), so tag yours for a test-tweet.
+      p Tip: Keep field blank to show all tweets, if you can handle it (warning: this may slow things down on your machine quite a lot.) 
+      p To my knowledge, this is the only streaming twitter visualization that allows you to filter by keyword.  That's why I built it, anyway.  Thank you for trying it out.

@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+  <style>
+  #header {
+  position: fixed;
+  height: 45px;
+  width: 100%;
+  background: red;
+}
+  #header input {
+    width: 90%;
+    margin: 2% 5%;
+  }
+  #tweets {
+    padding: 5%;
+  }
+  .data {
+    color: blue;
+  }
+  .name {
+    color: black;
+    float: left;
+    border: 1px solid black;
+    width: 48px;
+    height: 48px;
+    margin: 2px;
+  }
+  .tweet {
+    padding: 5px;
+  }
+  </style>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+</head>
+
+
+<title>Socket.io Twitter Demo</title>
+<body>
+<div id="header">
+  <input id="track"></input><input id="adder" type="button" value="Track Me!">
+</div>
+<div id="tweets"></div>
+
+
+
+<script>
+  var socket = io.connect('/'),
+      tweets = document.getElementById('tweets');
+  socket.on('tweet', function (pic, screen_name, user, text) {
+    tweets.innerHTML = tweets.innerHTML + '<br clear="all"><div class="tweet"><div class="name"><a href="http://twitter.com/' + screen_name + '" target="_blank""><img src="' + pic + '"></a></div><div class="data">' + text + '</div></div><br clear="all">';
+  });
+
+</script>
+
+</body>
