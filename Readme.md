@@ -4,14 +4,13 @@ Also allows saving/sharing through Mongodb backend.
 ##Code Example
 Streams all geotagged tweets and uses regular expressesions to filter by keyword:
 
-***
-twit.stream('statuses/filter', {locations: [-179.9,-90,179.9,90] }, function(stream) {
+***twit.stream('statuses/filter', {locations: [-179.9,-90,179.9,90] }, function(stream) {
           console.log('inside ' + watches);
           stream.on('data', function (data) {
               io.sockets.emit('tweet', data, shareurl);
 
-          });
-var re = new RegExp(watches[i]);
+          }); 
+          var re = new RegExp(watches[i]);
                     if (data.text.match(re)) 
                     {...}
 ***
