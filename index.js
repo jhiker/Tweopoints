@@ -44,10 +44,10 @@ app.use(express.static(__dirname + '/scripts'));
 //twitter
 
 var twit = new twitter({
-  consumer_key: '7jwv7yRsa6EBl8NphDq3LQ',
-  consumer_secret: 'fILH404rgPXwES06AOyp1FtVGQm1fvU6NVygoXvLuU',
-  access_token_key: '15829179-O42nyuRC54CLOKE81DJQBLIr6zQDc8RVIv0Dp3lNs',
-  access_token_secret: 'VCZIBEfJ7ANXXIwSuu4bE9OPsQbZSPN7s1DKt258'
+  consumer_key: '',      //Fill in 
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: ''
 });
 
 
