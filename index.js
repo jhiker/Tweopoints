@@ -10,7 +10,6 @@ var express = require("express");
     //config = require('./config'),
     mongoose = require('mongoose'),
     db = mongoose.connect('mongodb://localhost/mydb'),
-    //db = mongoose.connect('mongodb://nodejitsu:e25e0ebb49ab22ad6a6ca923dfa66378@dharma.mongohq.com:10048/nodejitsudb6940029473'),
 
 Schema = mongoose.Schema;
 
