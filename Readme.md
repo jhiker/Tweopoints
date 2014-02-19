@@ -18,8 +18,11 @@ Streams all geotagged tweets and uses regular expressesions to filter by keyword
 ##Motivation
 I noticed that there are no geotagged streaming apps that allow keyword search, and so I built this as a fun first app.
 ##Installation
-npm install
-node index.js
+***
+	npm install
+
+	node index.js
+***
 ##License
 Author: Jonathan Leslie, 2013
 Apache License, V 2.0. 
