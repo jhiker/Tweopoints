@@ -24,7 +24,7 @@ I noticed that there are no geotagged streaming apps that allow keyword search, 
 ##Run Locally
 ***
   mongod 
-	node index.js
+  node index.js
 ***
 ##License
 Author: Jonathan Leslie, 2013
