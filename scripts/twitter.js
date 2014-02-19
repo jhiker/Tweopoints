@@ -310,10 +310,12 @@ socket.on('tweet', function (data, shareurl)
 
   };
 
+/*
   $("#topic-buttons").on("click", "input", function(event){
     var removeVar = $(this).context.value;
     socket.emit('remove', {topic: removeVar});
   });
+*/
   
 
 

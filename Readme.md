@@ -19,8 +19,11 @@ Streams all geotagged tweets and uses regular expressesions to filter by keyword
 I noticed that there are no geotagged streaming apps that allow keyword search, and so I built this as a fun first app.
 ##Installation
 ***
-	npm install
-
+	npm install tweopoints
+***
+##Run Locally
+***
+  mongod 
 	node index.js
 ***
 ##License
