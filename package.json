@@ -9,7 +9,32 @@
   },
   "dependencies": {
     "express": "3.x",
-    "mongoose": "*"
+    "mongoose": "*",
+    "twitter":"0.1.18",
+    "mongodb": "*",
+    "requirejs": "2.1.6",
+    "socket.io": "0.9.16",
+    "jsrender": "0.0.3"
   },
-  "subdomain": "tweopoints"
+  "subdomain": "tweopoints",
+  "description": "Stream geolocated tweets, using node.js, socket.io, and the Streaming API.  Hosted at nodejitsu: tweopoints.jit.su. Also allows saving/sharing through Mongodb backend. ##Code Example Streams all geotagged tweets and uses regular expressesions to filter by keyword:",
+  "main": "index.js",
+  "devDependencies": {
+    "jade": "0.31.2",
+},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhiker/Tweopoints.git"
+  },
+  "keywords": [
+    "twitter",
+    "socket.io",
+    "websockets"
+  ],
+  "author": "Jonathan Leslie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhiker/Tweopoints/issues"
+  },
+  "homepage": "https://github.com/jhiker/Tweopoints"
 }
